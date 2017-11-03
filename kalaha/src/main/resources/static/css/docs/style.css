@@ -1,0 +1,51 @@
+* {
+
+}
+
+body {
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-weight: normal;
+}
+
+.header {
+  display : flex;
+  justify-content: center;
+  background-color: #2C5BC3
+}
+
+.menu-bar {
+  display : flex;
+  justify-content: center;
+}
+
+.menu-bar a {
+  font-weight: bold;
+  text-decoration: none;
+  margin: 10px;
+  padding: 20px;
+  color: 2C5BC3;
+}
+
+
+
+a {
+  text-decoration: none;
+}
+
+p {
+  margin: 10px;
+  padding: 10px;
+}
+
+h1, h2, h3, h4, img, ul, li {
+  margin: 10px;
+  padding: 10px;
+}
+
+code {
+    display: inline-block;
+    width: 1000px; /* Whatever. The <code>'s width will change */
+    margin: 20px;
+    padding: 20px;
+    background-color: #B0D7ED
+}

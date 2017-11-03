@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Instructions</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="css/docs/style.css">
+</head>
+<body>
+  <div class='header'>
+    <h1>Instructions</h1>
+  </div>
+  <div class='menu-bar'>
+    <a href="greeting.html">Home</a>
+    <a href="instructions.html">Instructions</a>
+    <a href="game-rules.html">Game rules</a>
+    <a href="guidelines.html">Guidelines</a>
+  </div>
+<p>
+    At bol.com the majority of our code is written in Java. Therefore, we prefer that you implement this assignment in
+    Java. However if you have a good reason to implement it in another programming language (still preferably a JVM
+    language), do not hesitate to discuss this with us.
+</p>
+<p>
+    We would like you to program a web application together with a REST backend that is an implementation of the Kalaha game.
+    The rules of the game are explained in <a href="game-rules.html">Game Rules</a> together with our requirements regarding the backend service.
+</p>
+<p>
+    This web application should be implemented in a way that multiple players can play the game in pairs (2 players per
+    game). Therefore you have to roll some kind of communication between two clients (via the service endpoint).
+</p>
+<p>
+    We provided you spring boot based project with skeleton code which contains empty classes, some static assets and
+    a simple UI to start with. Feel free to add necessary stuff (and preferably avoid removing) as long as you adhere to
+    endpoint specification (we will be using it for automated tests to check correctness in the future)
+</p>
+<p>
+  You could reach game's user interface via <a href="http://localhost:8080/game">localhost:8080/game</a>
+</p>
+<h3>Required Endpoints</h3>
+
+
+<h4>Add Player</h4>
+<pre>
+  <code class="javascript">
+Request :
+POST /player
+{
+       "playerName" : "Carl Sagan"
+}
+
+Response :
+{
+       "playerId" : 1
+}
+  </code>
+</pre>
+
+<h4>Get Player Name</h4>
+<pre>
+  <code class="javascript">
+Request :
+GET /player/playerId
+
+Response :
+{
+      "playerName" : "Carl Sagan"
+}
+  </code>
+</pre>
+
+<h4>List players</h4>
+
+<pre>
+  <code class="javascript">
+Request :
+GET /players/
+
+Response :
+{
+      [{"playerId" : 1, "playerName" : "Carl Sagan"}, {"playerId" : 2, "playerName" : "Richard Feynman"}]
+}
+  </code>
+</pre>
+
+<h4>Requesting Game for the Player</h4>
+
+<pre>
+  <code class="javascript">
+Return the game with initialized state
+
+Request :
+GET /game/{playerId}
+
+Response :
+404 : if there is no game yet
+
+Otherwise (200) return a "Game" response following the schema :
+
+{
+  "Game" : {
+    "id" : 1,
+          [
+            "Player" : {
+                "id" : 1,
+              "name" : "Carl Sagan",
+            "kalaha" : 0,
+              "pits" : [6, 6, 6, 6, 6, 6]
+              },
+            "Player" : {
+                "id" : 2,
+              "name" : "Richard Feynman",
+            "kalaha" : 0,
+              "pits" : [6, 6, 6, 6, 6, 6]
+            }],
+    "turnOfWithId" : 1,
+          "isOver" : false,
+          "winner" : null
+        }
+}
+  </code>
+</pre>
+
+<p>If the game is over values should be trivial based on the example above.</p>
+
+
+<h4>Pick Stones From a Pit and Sow</h4>
+
+<pre>
+  <code class="javascript">
+Request :
+POST /game/pit
+
+{
+    "gameId" : 1,
+    "playerId" : 1,
+    "pitId" : 0
+}
+
+Response :
+200 : Return "Game" (see above)
+405 : if it is not player's turn
+
+Otherwise return response which includes Game (See above for schema)
+  </code>
+</pre>
+
+
+
+</body>
+</html>
