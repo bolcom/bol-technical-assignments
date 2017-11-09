@@ -3,30 +3,30 @@ Dear Candidate,
 
 We need your help finalizing one of our services which is really important for us. The service is called Aggregator and it joins together information about orders from Order service, Offer Service and Product service.
 
-It works like follows:
+It works as follows:
 
-- It takes an OrderId, OfferId and ProductId from Order service using a sellerId
+- The Aggregator uses sellerId to retrieve OrderId, OfferId, and ProductId from the Order Service.
 
 - Then it uses the OfferId and ProductId to retrieve information from Offer service and Product service respectively
 
-- After this, the Aggregator service joins information from Order service, Offer service and Product service into an EnrichedOrder and returns it
+- The Aggregator uses the information retrieved from the Order Service, Offer Service, and Product Service and returns an EnrichedOrder.
 
 Restrictions:
 
-- Every service can fail
+- Every service can fail. The following guidelines for failures are :
 
-- If Order service has failed, we throw an exception and return nothing, because we cannot fetch any data from Product or Offer service
+- If Order service fails, throw an exception and return nothing, because we cannot fetch any data from Product or Offer service
 
-- If Order service has succeeded and Offer Service has succeeded but Product service has failed, we return an EnrichedOrder with Info from Order service and Offer service; Product id is -1 and product title is null
+- If Order service succeeds and Offer Service succeeds but Product service fails, we return an EnrichedOrder with Info from Order service and Offer service; Product id is -1 and product title is null
 
-- If Order service has succeeded and Product service has succeeded but Offer service has failed, we return EnrichedOrder with Info from Order service and Product service; Offer id is -1 and Offer condition is UNKNOWN
+- If Order service succeeds and Product service succeeds but Offer service fails, we return EnrichedOrder with Info from Order service and Product service; Offer id is -1 and Offer condition is UNKNOWN
 
-- If Order service has succeeded but Product service has failed and Offer Service has failed, we return an EnrichedOrder with info from Order service only; Offer id is -1 and Offer condition is UNKNOWN. Product id is -1 and product title is null
+- If Order service has succeeds but Product service and Offer Service fails, we return an EnrichedOrder with info from Order service only; Offer id is -1 and Offer condition is UNKNOWN. Product id is -1 and product title is null
 
-- If Order service has succeeded and Product service has succeeded and Offer service has succeeded, we return an EnrichedOrder with info from Order service, Offer Service and Product service
+- If Order service, Product service and Offer service all succeeds, we return an EnrichedOrder with info from Order service, Offer Service and Product service
 
 The team that was working on this service already wrote all the unit test for Aggregator service and implemented Order, Offer and Product services
 
-They haven't gotten around to implementing the Aggregator service itself, though. Can you please help them by implementing it?
+However, they haven't gotten around to implementing the Aggregator service itself, though. Can you please help them by implementing it?
 
-You are done as soon as you pass all unit tests.
+You are done as soon as all unit tests pass.
