@@ -21,7 +21,7 @@ Restrictions:
 
 - If Order service succeeds and Product service succeeds but Offer service fails, we return EnrichedOrder with Info from Order service and Product service; Offer id is -1 and Offer condition is UNKNOWN
 
-- If Order service has succeeds but Product service and Offer Service fails, we return an EnrichedOrder with info from Order service only; Offer id is -1 and Offer condition is UNKNOWN. Product id is -1 and product title is null
+- If Order service succeeds but Product service and Offer Service fails, we return an EnrichedOrder with info from Order service only; Offer id is -1 and Offer condition is UNKNOWN. Product id is -1 and product title is null
 
 - If Order service, Product service and Offer service all succeeds, we return an EnrichedOrder with info from Order service, Offer Service and Product service
 
