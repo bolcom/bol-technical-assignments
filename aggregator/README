@@ -1,7 +1,6 @@
-
 Dear Candidate,
 
-We need your help finalizing one of our services which is really important for us. The service is called Aggregator and it joins together information about orders from Order service, Offer Service and Product service.
+We need your help finalising two of our services which is really important for us. The service is called Aggregator and it joins together information about orders from Order service, Offer Service, Product service and Image Service.
 
 It works as follows:
 
@@ -9,7 +8,19 @@ It works as follows:
 
 - Then it uses the OfferId and ProductId to retrieve information from Offer service and Product service respectively
 
-- The Aggregator uses the information retrieved from the Order Service, Offer Service, and Product Service and returns an EnrichedOrder.
+- Then it uses the product title, from the Product Service, to retrieve a list of images from the ImageService.
+
+- The Aggregator uses the information retrieved from the Order Service, Offer Service, Product Service and Image Service and returns an EnrichedOrder.
+
+
+Image Service:
+
+- Unfortunately the team could not finish the Image Service in time :( We need your help to implement it. The specifications are as follows:
+    There is an interface named ImageService defined for the service. You should implement the interface.
+    There is a JSON file in the resources directory containing all the images necessary to initial load the ImageService. Your implementation should load such images from the file.
+    Since you are a new team member, you should prove to us that your ImageService implementation is *correct*.
+    Since the new ImageService is used in the AggregatorService, you should improve the existing unit tests and also integrate the ImageService without breaking the existing ones.
+
 
 Restrictions:
 
@@ -29,4 +40,16 @@ The team that was working on this service already wrote all the unit test for Ag
 
 However, they haven't gotten around to implementing the Aggregator service itself, though. Can you please help them by implementing it?
 
-You are done as soon as all unit tests pass.
+Important: your application should be self-contained, no installation required. 
+
+Extras:
+
+- Make a REST API out of the aggregator and the other services
+
+- Make a consumer for the REST API
+
+- Introduce a new technology: database, indexing, front-end, etc
+
+- Containerize your application
+ 
+- Whatever you love

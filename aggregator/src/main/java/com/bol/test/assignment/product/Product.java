@@ -1,5 +1,6 @@
 package com.bol.test.assignment.product;
 
+
 public class Product {
     private int id;
     private String title;
