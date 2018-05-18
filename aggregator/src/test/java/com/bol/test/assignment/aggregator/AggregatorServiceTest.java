@@ -55,7 +55,7 @@ public class AggregatorServiceTest {
         assertThat(enrichedOrder.getId(), is(orderId));
     }
 
-    @Test(timeout = 5000)
+    @Test(timeout = 2000)
     public void offerAndProductServicesAreSlow() {
         when(orderService.getOrder(sellerId)).thenReturn(new Order(orderId, offerId, productId));
         when(offerService.getOffer(offerId)).thenAnswer(
