@@ -26,7 +26,7 @@ Restrictions:
 
 - Every service can fail. The following guidelines for failures are :
 
-- If Order service fails, throw an exception and return nothing, because we cannot fetch any data from Product or Offer service
+- If Order service fails, throw an exception, because we cannot fetch any data from Product or Offer service
 
 - If Order service succeeds and Offer Service succeeds but Product service fails, we return an EnrichedOrder with Info from Order service and Offer service; Product id is -1 and product title is null
 
